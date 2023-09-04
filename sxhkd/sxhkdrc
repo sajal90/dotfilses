@@ -1,0 +1,7 @@
+# increase brightness
+super + F7
+  brillo -A 10
+
+#decrease brightness 
+super + F6
+  brillo -U 10	

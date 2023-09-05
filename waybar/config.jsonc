@@ -1,0 +1,219 @@
+{
+  "layer": "top",
+  "position": "top",
+  "mod": "dock",
+  "exclusive": true,
+  "passthrough": false,
+  "gtk-layer-shell": true,
+  //"height": 40,
+  "modules-left": [
+    //"custom/launch_wofi",
+    "hyprland/workspaces",
+    "cpu",
+    "memory",
+    "disk",
+    "wlr/taskbar"
+    //"custom/media"
+  ],
+  "modules-center": [
+    "clock"
+   ],
+  "modules-right": [
+    "battery",
+    "temperature",
+    "backlight",
+    "pulseaudio",
+    "pulseaudio#microphone"
+    //"tray",
+    //"custom/weather",
+    //"custom/lock_screen",
+    //"custom/power_btn"
+  ],
+  "hyprland/window": {
+    "format": "{}"
+  },
+  "custom/launch_wofi": {
+    "format": "",
+    "on-click": "pkill wofi; wofi -n",
+    "tooltip": false
+  },
+  "hyprland/workspaces": {
+    //"disable-scroll": true,
+    //"all-outputs": true,
+    "on-click": "activate",
+    "persistent_workspaces": {
+      "1": ["eDP-1"],
+      "2": ["eDP-1"],
+      "3": ["eDP-1"],
+      "4": ["eDP-1"],
+      "5": ["eDP-1"],
+      "urgent": "",
+      "active": "!",
+      "default": ""
+    },
+
+    "sort-by-number": true
+  },  
+  "cpu": {
+    "interval": 10,
+    "format": " {usage}%",
+    "max-length": 10,
+    "on-click": "alacritty --title btop -e sh -c 'btop'"
+  },
+  "disk": {
+    "interval": 30,
+    "format": "󰋊 {percentage_used}%",
+    "path": "/",
+    "tooltip": true,
+    "tooltip-format": "SSD - {used} used out of {total} on {path} ({percentage_used}%)",
+    "on-click": "alacritty --title btop -e sh -c 'btop'"
+  },
+  "wlr/taskbar": {
+      "format": "{icon}",
+      "icon-size": 14,
+      "icon-theme": "Numix-Circle",
+      "tooltip-format": "{title}",
+      "on-click": "activate",
+      "on-click-middle": "close",
+      "on-click-right": "minimize",
+      //"ignore-list": [
+      //    "Alacritty"
+      //],
+      "app_ids-mapping": {
+          "firefoxdeveloperedition": "firefox-developer-edition"
+      },
+      "rewrite": {
+          "Firefox Web Browser": "Firefox",
+          "Foot Server": "Terminal"
+      }
+  },
+  "memory": {
+    "interval": 30,
+    "format": " {}%",
+    "max-length": 10,
+    "tooltip": true,
+    "tooltip-format": "Memory - {used:0.1f}GB used",
+    "on-click": "alacritty --title btop -e sh -c 'btop'"
+  },
+  "custom/media": {
+    "format": "{icon} {}",
+    "return-type": "json",
+    "max-length": 40,
+    "format-icons": {
+      "spotify": "",
+      "chromium": "",
+      "default": ""
+    },
+    "escape": true,
+    "exec": "python3 $HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null"
+    // "exec": "$HOME/.config/waybar/scripts/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+  },
+  "custom/weather": {
+    //shows the current weather and forecast
+    "tooltip": true,
+    "format": "{}",
+    "interval": 30,
+    "exec": "~/.config/waybar/scripts/waybar-wttr.py",
+    "return-type": "json"
+  },
+  "tray": {
+    "icon-size": 18,
+    "spacing": 10
+  },
+  "clock": {
+    "format": "{:%a %b %d %I:%M %p}",
+    "tooltip": true,
+    // "tooltip-format": "{:  %A, %B %e %Y}",
+    "tooltip-format": "<big><tt>{calendar}</tt></big>"
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": [
+      "󰃞",
+      "󰃟",
+      "󰃠"
+    ],
+    "on-click": "",
+    "on-click-middle": "",
+    "on-click-right": "",
+    "on-update": "",
+    "on-scroll-up": "brillo -A 5",
+    "on-scroll-down": "brillo -U 5",
+    "min-length": 6
+  },
+  "battery": {
+    "interval": 5,
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": [
+      "󰂎",
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ]
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": " Muted",
+    "on-click": "~/.config/hypr/scripts/volume --toggle",
+    "on-click-right": "pavucontrol",
+    "on-scroll-up": "~/.config/hypr/scripts/volume --inc",
+    "on-scroll-down": "~/.config/hypr/scripts/volume --dec",
+    "scroll-step": 5,
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    }
+  },
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": " {volume}%",
+    "format-source-muted": " Muted",
+    "on-click": "~/.config/hypr/scripts/volume --toggle-mic",
+    "on-click-right": "pavucontrol",
+    "on-scroll-up": "~/.config/hypr/scripts/volume --mic-inc",
+    "on-scroll-down": "~/.config/hypr/scripts/volume --mic-dec",
+    "scroll-step": 5
+  },
+  "temperature": {
+    "thermal-zone": 7,
+    "format": " {temperatureC}°C",
+    "critical-threshold": 70,
+    //"format-critical": " {temperatureC}°C",
+    "on-click": "alacritty -o \"window.startup_mode=Fullscreen\" sh -c 'btop'"
+  },
+  "custom/lock_screen": {
+    "format": "",
+    "on-click": "sh -c '(sleep 0.5s; swaylock)' & disown",
+    "tooltip": false
+  },
+  "custom/power_btn": {
+    "format": "",
+    "on-click": "sh -c '(sleep 0.5s; wlogout --protocol layer-shell)' & disown",
+    "tooltip": false
+  }
+}

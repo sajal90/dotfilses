@@ -53,6 +53,7 @@ tooltip label {
   border-radius: 10px;
 }
 
+
 #custom-launch_wofi,
 #custom-lock_screen,
 #custom-power_btn,
@@ -67,6 +68,7 @@ tooltip label {
 #network,
 #tray,
 #temperature,
+/*#taskbar,*/
 #workspaces,
 #backlight {
   background: #1e1e2e;
@@ -81,6 +83,8 @@ tooltip label {
 /* #tray, */
 #custom-launch_wofi,
 #cpu,
+/*#network,*/
+#taskbar,
 #battery {
   border-radius: 10px 0px 0px 10px;
 }
@@ -118,6 +122,10 @@ clock {
 #workspaces {
   padding-right: 0px;
   padding-left: 3px;
+}
+
+#taskbar button {
+  background: rgba(21, 18, 27, 0);
 }
 
 #custom-media {

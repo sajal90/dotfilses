@@ -14,8 +14,6 @@ makepkg -si
 paru -S hyprland-git ttf-merriweather
 
 
-git clone https://github.com/sajal90/dotfiles
-cd dotfiles
 
 cp -r hypr waybar neovim alacritty ~/.config
 

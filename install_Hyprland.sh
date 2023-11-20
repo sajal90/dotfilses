@@ -13,5 +13,5 @@ paru -S hyprland-git ttf-merriweather
 
 
 cd ..
-cp -r hypr waybar neovim alacritty ~/.config
+cp -r hypr waybar nvim alacritty ~/.config
 
